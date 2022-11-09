@@ -1,0 +1,53 @@
+---
+title: "Shotchart"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(BasketballAnalyzeR)
+```
+```{r}
+
+```
+
+```{r}
+PbPmanipulation(PbP.BDB) -> PbP
+PbP %>% mutate(xx = original_x/10, yy = original_y/10-41.75) -> PbP
+
+```
+
+```{r}
+PbP %>% filter(player == "Draymond Green") -> PbP
+```
+
+```{r}
+shotchart(data=PbP, x = "xx", y = "yy", scatter = TRUE)
+```
+```{r}
+shotchart(data=PbP, x = "xx", y = "yy", z = "result", scatter = TRUE)
+```
+```{r}
+shotchart(data=NULL, x =0, y = 0,,type = "sectors", num.sect = 5, sectline.col = "black")
+```
+```{r}
+```
+
+
+```{r}
+shotchart(data=PbP, x ="xx", y = "yy", z = "playlength", type = "sectors", num.sect = 5, sectline.col = "black", scatter = TRUE)
+```
+
+
+```{r}
+shotchart(data=PbP, x ="xx", y = "yy", z = "playlength", result = "result", type = "sectors", num.sect = 5, sectline.col = "black", scatter = FALSE)
+```
+
+```{r}
+shotchart(data = PbP, x = "xx", y = "yy", type = "density-raster")
+```
+
